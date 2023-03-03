@@ -8,11 +8,11 @@ part 'config.g.dart';
 @JsonSerializable(createToJson: false)
 class Config {
   Config({
-    required this.fileReplacememnt,
+    required this.fileReplacement,
     required this.stringReplacement,
   });
-  @JsonKey(name: 'file_replacememnt')
-  final List<FileReplacememnt> fileReplacememnt;
+  @JsonKey(name: 'file_replacement')
+  final List<FileReplacememnt> fileReplacement;
   @JsonKey(name: 'string_replacement')
   final List<StringReplacement> stringReplacement;
 

@@ -15,7 +15,7 @@ class EnvGenerator {
           replacement: stringReplaceMent.replacement);
     }
 
-    for (var fileReplaceMent in config.fileReplacememnt) {
+    for (var fileReplaceMent in config.fileReplacement) {
       await replaceFile(from: fileReplaceMent.from, to: fileReplaceMent.to);
     }
   }

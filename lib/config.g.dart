@@ -7,7 +7,7 @@ part of 'config.dart';
 // **************************************************************************
 
 Config _$ConfigFromJson(Map<String, dynamic> json) => Config(
-      fileReplacememnt: (json['file_replacememnt'] as List<dynamic>)
+      fileReplacement: (json['file_replacement'] as List<dynamic>)
           .map((e) => FileReplacememnt.fromJson(e as Map<String, dynamic>))
           .toList(),
       stringReplacement: (json['string_replacement'] as List<dynamic>)
