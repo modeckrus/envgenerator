@@ -1,14 +1,14 @@
 {
-    "file_replacememnt":{
+    "file_replacememnt":[{
         "from":"./android/dev/local.properties",
         "to":"./android/local.properties"
-    },
-    "string_replacement":{
+    }],
+    "string_replacement":[{
         "keys":[
             "dev_key",
             "prod_key"
         ],
         "replacement":"dev_key",
         "path":"./ios/project.pbxproj"
-    }
+    }]
 }

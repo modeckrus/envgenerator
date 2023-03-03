@@ -8,12 +8,16 @@ class EnvGenerator {
 
   EnvGenerator(this.config);
   Future<void> makeTasks() async {
-    await replaceKey(
-        path: config.stringReplacement.path,
-        keys: config.stringReplacement.keys,
-        replacement: config.stringReplacement.replacement);
-    await replaceFile(
-        from: config.fileReplacememnt.from, to: config.fileReplacememnt.to);
+    for (var stringReplaceMent in config.stringReplacement) {
+      await replaceKey(
+          path: stringReplaceMent.path,
+          keys: stringReplaceMent.keys,
+          replacement: stringReplaceMent.replacement);
+    }
+
+    for (var fileReplaceMent in config.fileReplacememnt) {
+      await replaceFile(from: fileReplaceMent.from, to: fileReplaceMent.to);
+    }
   }
 
   static Future<void> replaceKey(

@@ -12,9 +12,9 @@ class Config {
     required this.stringReplacement,
   });
   @JsonKey(name: 'file_replacememnt')
-  final FileReplacememnt fileReplacememnt;
+  final List<FileReplacememnt> fileReplacememnt;
   @JsonKey(name: 'string_replacement')
-  final StringReplacement stringReplacement;
+  final List<StringReplacement> stringReplacement;
 
   factory Config.fromJson(Map<String, dynamic> json) => _$ConfigFromJson(json);
   factory Config.fromPath(String path) {
