@@ -9,10 +9,17 @@ void main() {
     var replacement = "d59456a8-5fd4-4a29-a3e3-cdd249b8a49b";
     var path = 'test/project.pbxproj';
     var text = File(path).readAsStringSync();
-    await EnvGenerator.replaceKey(
-        path: path, keys: keys, replacement: replacement);
+    await EnvGenerator.replaceKey(path: path, keys: keys, replacement: replacement);
     text = File(path).readAsStringSync();
     expect(text.contains(replacement), true);
     expect(text.contains(keys[0]), false);
+  });
+
+  test('folder replacement test', () async {
+    var folderTo = 'test_folder/test';
+    var folderFrom = 'test2/test';
+    await EnvGenerator.replaceDirectoryContents(from: folderFrom, to: folderTo);
+    expect(Directory(folderTo).existsSync(), true);
+    expect(Directory(folderFrom).existsSync(), false);
   });
 }
