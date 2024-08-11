@@ -1,22 +1,10 @@
 {
-    "file_replacememnt": [
+    "file_replacememnt": [],
+    "string_replacement": [],
+    "folder_replacement": [
         {
-            "from": "./android/dev/local.properties",
-            "to": "./android/local.properties"
+            "from": "test1",
+            "to": "test_folder"
         }
-    ],
-    "string_replacement": [
-        {
-            "keys": [
-                "dev_key",
-                "prod_key"
-            ],
-            "replacement": "dev_key",
-            "path": "./ios/project.pbxproj"
-        }
-    ],
-    "folder_replacement": {
-        "from": "test1/test",
-        "to": "test_folder/test"
-    }
+    ]
 }
