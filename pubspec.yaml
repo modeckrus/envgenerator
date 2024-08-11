@@ -1,6 +1,6 @@
 name: envgenerator
 description: CLI App to generate environment files
-version: 1.0.3
+version: 1.0.4
 repository: https://github.com/modeckrus/envgenerator
 
 environment:
