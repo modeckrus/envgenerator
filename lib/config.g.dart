@@ -7,11 +7,11 @@ part of 'config.dart';
 // **************************************************************************
 
 Config _$ConfigFromJson(Map<String, dynamic> json) => Config(
-      fileReplacement: (json['file_replacement'] as List<dynamic>)
-          .map((e) => FileReplacememnt.fromJson(e as Map<String, dynamic>))
+      fileReplacement: (json['file_replacement'] as List<dynamic>?)
+          ?.map((e) => FileReplacememnt.fromJson(e as Map<String, dynamic>))
           .toList(),
-      stringReplacement: (json['string_replacement'] as List<dynamic>)
-          .map((e) => StringReplacement.fromJson(e as Map<String, dynamic>))
+      stringReplacement: (json['string_replacement'] as List<dynamic>?)
+          ?.map((e) => StringReplacement.fromJson(e as Map<String, dynamic>))
           .toList(),
       folderReplacement: (json['folder_replacement'] as List<dynamic>?)
           ?.map((e) => FolderReplacement.fromJson(e as Map<String, dynamic>))

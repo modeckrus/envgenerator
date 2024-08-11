@@ -16,10 +16,44 @@ void main() {
   });
 
   test('folder replacement test', () async {
-    var folderTo = 'test_folder/test';
+    var folderTo = 'test_folder';
     var folderFrom = 'test2/test';
     await EnvGenerator.replaceDirectoryContents(from: folderFrom, to: folderTo);
     expect(Directory(folderTo).existsSync(), true);
     expect(Directory(folderFrom).existsSync(), false);
+  });
+
+  group('replaceDirectoryContents', () {
+    final testSourceDir = Directory('test2/test');
+    final testDestinationDir = Directory('test_folder/test');
+
+    setUp(() async {
+      await testSourceDir.create();
+      await File('${testSourceDir.path}/test_file.txt').writeAsString('Test content');
+      await Directory('${testSourceDir.path}/sub_dir').create();
+      await File('${testSourceDir.path}/sub_dir/test_file2.txt').writeAsString('Sub directory content');
+    });
+
+    tearDown(() async {
+      if (await testSourceDir.exists()) await testSourceDir.delete(recursive: true);
+      if (await testDestinationDir.exists()) await testDestinationDir.delete(recursive: true);
+    });
+
+    test('should replace directory contents correctly', () async {
+      await EnvGenerator.replaceDirectoryContents(from: testSourceDir.path, to: testDestinationDir.path);
+
+      expect(await testDestinationDir.exists(), isTrue);
+      expect(await File('${testDestinationDir.path}/test_file.txt').exists(), isTrue);
+      expect(await Directory('${testDestinationDir.path}/sub_dir').exists(), isTrue);
+      expect(await File('${testDestinationDir.path}/sub_dir/test_file2.txt').exists(), isTrue);
+    });
+
+    test('should handle non-existent source directory', () async {
+      final nonExistentDir = Directory('non_existent');
+
+      await EnvGenerator.replaceDirectoryContents(from: nonExistentDir.path, to: testDestinationDir.path);
+
+      expect(await testDestinationDir.exists(), isFalse);
+    });
   });
 }
