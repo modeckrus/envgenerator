@@ -13,6 +13,15 @@ Config _$ConfigFromJson(Map<String, dynamic> json) => Config(
       stringReplacement: (json['string_replacement'] as List<dynamic>)
           .map((e) => StringReplacement.fromJson(e as Map<String, dynamic>))
           .toList(),
+      folderReplacement: (json['folder_replacement'] as List<dynamic>?)
+          ?.map((e) => FolderReplacement.fromJson(e as Map<String, dynamic>))
+          .toList(),
+    );
+
+FolderReplacement _$FolderReplacementFromJson(Map<String, dynamic> json) =>
+    FolderReplacement(
+      from: json['from'] as String,
+      to: json['to'] as String,
     );
 
 FileReplacememnt _$FileReplacememntFromJson(Map<String, dynamic> json) =>
